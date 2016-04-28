@@ -1,3 +1,13 @@
 マイゴール詳細ページ
 
-<%= link_to '進捗データ入力', "/tracks/new", method: :get %>
+<%= link_to '進捗データ入力', new_goal_track_path(@goal) %>
+
+  <p>プログレスは
+  <% @progs.each do |prog| %>
+  <% @total += prog.quantity %>
+  <% end %>
+
+ 
+
+  <%= @total/@aim.quantity*100  %>
+  %です</p>

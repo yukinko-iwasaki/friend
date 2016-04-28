@@ -1,7 +1,7 @@
 進捗でーた入力
 
 
-<%= form_for @track do |f| %>
+<%= form_for @track,:url => {:action => :create} do |f| %>
   <%= f.label :quantity %>
   <%=f.number_field :quantity %>
 

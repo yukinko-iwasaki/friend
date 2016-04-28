@@ -2,6 +2,8 @@ class TracksController < ApplicationController
 
   def new
      @track=Track.new
+     @goal=Goal.find(params[:goal_id])
+
    end
 
   def create
@@ -13,6 +15,7 @@ class TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:quantity)
+    @goal=Goal.where(user_id:current_user.id)
+    params.require(:track).permit(:quantity).merge(goal_id:params[:goal_id]).merge(user_id:current_user.id)
   end
 end

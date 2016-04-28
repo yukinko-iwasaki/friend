@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-resources :goals
+resources :goals do
+  resources :tracks
+end
+get 'goals/:id'=> 'goals#progress'
 resources :users
-resources :tracks
-  root 'goals#index'
+
+root 'goals#index'
 end

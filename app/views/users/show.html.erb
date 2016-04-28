@@ -1,0 +1,15 @@
+マイページ!!!
+
+<a href="/goals/new">目標設定</a>
+
+<% @goals.each do |goal| %>
+<ul>
+<li>
+<%= goal.goal_name %>
+<%= link_to '詳細', "/goals/#{goal.id}", method: :get %>
+  </li>
+  </ul>
+<% end %>
+
+
+

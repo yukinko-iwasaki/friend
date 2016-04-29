@@ -60,4 +60,6 @@ group :development, :test do
   gem 'pry-stack_explorer' # スタックをたどれる
 end
 
-ruby '2.2.4'
+ruby '2.1.3'
+
+gem 'therubyracer'

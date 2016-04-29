@@ -13,10 +13,21 @@
   %です</p>
 
 <div class=comments>
-<%= form_for @comment, :url=>{ :action=> :commentcreate} do |f| %>
+<%= form_for @comment, :url=>{ :action=> :commentcreate}, remote: true do |f| %>
 <%= f.text_field :comment %>
 <%= f.submit 'コメント' %>
 <% end %>
 
+<% @comments.each do |comment| %>
+  
+
+<ul>
+<% if comment.goal_id=params[:id] %>
+  <%= render @comments %>
+</ul>
+
+<% end %>
+
+<% end %>
 
   </div>

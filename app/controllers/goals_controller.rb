@@ -14,14 +14,15 @@ class GoalsController < ApplicationController
 
     
   def commentcreate
- 
+      @comments=Comment.all
       Comment.create(comment_params)
-    redirect_to action: :show
 
   end
 
 def show
+
   @comment=Comment.new
+  @comments=Comment.all
   @goal = Goal.find(params[:id])
   @total = 0
   @progs = Track.where(goal_id: params[:id])

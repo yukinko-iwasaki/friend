@@ -18,16 +18,11 @@
 <%= f.submit 'コメント' %>
 <% end %>
 
-<% @comments.each do |comment| %>
-  
 
-<ul>
-<% if comment.goal_id=params[:id] %>
+
+<ul class=comment_post>
   <%= render @comments %>
 </ul>
 
-<% end %>
-
-<% end %>
 
   </div>

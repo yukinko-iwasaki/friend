@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
 resources :goals do
   resources :tracks
+  resources :comments
 end
-get 'goals/:id'=> 'goals#progress'
-resources :users
 
+resources :users
+post '/goals/:id' => 'goals#commentcreate'
 root 'goals#index'
 end

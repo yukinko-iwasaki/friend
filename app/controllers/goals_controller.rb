@@ -1,5 +1,7 @@
 class GoalsController < ApplicationController
-  def index
+ 
+ def index
+
     @goals = Goal.all
   end
   
@@ -14,20 +16,37 @@ class GoalsController < ApplicationController
 
     
   def commentcreate
-      @comments=Comment.all
+ 
+      @comments=Comment.where(goal_id: params[:id])
+     
       Comment.create(comment_params)
+      
 
   end
 
 def show
 
   @comment=Comment.new
-  @comments=Comment.all
+  @comments=Comment.where(goal_id: params[:id])
+
+
   @goal = Goal.find(params[:id])
   @total = 0
   @progs = Track.where(goal_id: params[:id])
   @aim = Goal.find(params[:id])
 
+
+end
+
+def prshow
+
+  @comment=Comment.new
+  @comments=Comment.where(goal_id: params[:id])
+
+  @goal = Goal.find(params[:id])
+  @total = 0
+  @progs = Track.where(goal_id: params[:id])
+  @aim = Goal.find(params[:id])
 end
 
 

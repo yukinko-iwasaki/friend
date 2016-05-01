@@ -1,12 +1,12 @@
 マイページ!!!
 
-<a href="/goals/new">目標設定</a>
+<%= link_to '目標設定', new_user_goal_path(user_id: current_user.id) %>
 
 <% @goals.each do |goal| %>
 <ul>
 <li>
 <%= goal.goal_name %>
-<%= link_to '詳細', "/goals/#{goal.id}", method: :get %>
+<%= link_to '詳細', "/users/#{current_user.id}/goals/#{goal.id}", method: :get %>
   </li>
   </ul>
 <% end %>

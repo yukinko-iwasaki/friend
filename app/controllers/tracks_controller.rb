@@ -8,7 +8,8 @@ class TracksController < ApplicationController
 
   def create
     Track.create(track_params)
-    redirect_to controller: 'users',action: 'show', id: current_user.id
+   
+    redirect_to "/users/#{current_user.id}/goals/#{params[:goal_id]}"
   end
 
 

@@ -5,7 +5,10 @@ class TopsController < ApplicationController
   end
 
   def show
-    
+
+
+    @user=Goal.find(params[:id]).users.limit(1)
+
   end
   
 

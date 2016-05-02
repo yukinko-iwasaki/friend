@@ -11,7 +11,7 @@ end
 end
 
 
-
+post '/users/:user_id/goals/new' =>'goals#create2'
 
 post '/goals/:id' => 'goals#commentcreate'
 

@@ -1,5 +1,15 @@
-みんな詳細
+<h2>
+<%= @goal.goal_name %>
+  </h2>
+
+
+  <p>チャレンジャーは
 
 <% @user.each do |user| %>
-<%= user.email %>
+<%= user.name %> 
 <% end %>
+
+さん</p>
+
+
+

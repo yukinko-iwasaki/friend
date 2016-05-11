@@ -6,6 +6,7 @@ class GoalsController < ApplicationController
   end
   
   def new
+
     @goal = Goal.new
 
     @track=Track.new
@@ -14,12 +15,17 @@ class GoalsController < ApplicationController
   def create
     Goal.create(goal_params)
     redirect_to action: :index
- 
+    Track.create(goal_id:  Goal.last(1).first.id, user_id: current_user.id, quantity: 0)
+
   end
 
-   def create2
-    Goal.create(goal_params2)
+   def createcheck
+     
+    Goal.create(goal_params_check)
     redirect_to action: :index
+    Track.create(goal_id:  Goal.last(1).first.id, user_id: current_user.id, quantity: 0)
+
+
  
   end
 
@@ -29,7 +35,7 @@ class GoalsController < ApplicationController
     
   def commentcreate
  
-      @comments=Comment.where(goal_id: params[:id])
+      @comments=Comment.where(goal_id: params[:id]).order("created_at DESC")
      
       Comment.create(comment_params)
       
@@ -37,15 +43,22 @@ class GoalsController < ApplicationController
   end
 
 def show
-
+ 
   @comment=Comment.new
-  @comments=Comment.where(goal_id: params[:id])
+  @comments=Comment.where(goal_id: params[:id]).order("created_at DESC")
 
+  @track=Track.new
+
+  @tracks=Track.where(goal_id: params[:id])
 
   @goal = Goal.find(params[:id])
-  @total = 0
-  @progs = Track.where(goal_id: params[:id])
+
+  @rest=(Goal.find(params[:id]).deadline - Date.today).to_i
+
   @aim = Goal.find(params[:id])
+
+  
+
 
 
 end
@@ -72,15 +85,15 @@ end
   def goal_params
 
     params[:goal][:deadline]= DateTime.parse(params[:goal][:deadline])
-    params[:goal][:type] = 1
-    params.require(:goal).permit(:goal_name,:quantity,:frequency,:qunit, :frequency_unit, :type).merge(user_id: current_user.id)
+    params[:goal][:goaltype] = 1
+    params.require(:goal).permit(:goal_name,:quantity,:frequency,:qunit, :frequency_unit, :goaltype, :deadline).merge(user_id: current_user.id)
 
   end
 
- def goal_params2
-
-    params[:goal][:type] = 2
-    params.require(:goal).permit(:goal_name,:quantity,:frequency,:qunit, :deadline, :frequency_unit, :type).merge(user_id: current_user.id)
+ def goal_params_check
+  params[:goal][:deadline]= DateTime.parse(params[:goal][:deadline])
+    params[:goal][:goaltype] = 2
+    params.require(:goal).permit(:goal_name,:quantity,:frequency,:qunit, :deadline, :frequency_unit, :goaltype).merge(user_id: current_user.id)
 
   end
 

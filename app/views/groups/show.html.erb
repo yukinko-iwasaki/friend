@@ -1,0 +1,18 @@
+グループの目標ページ
+<h2 class="goaldeclaration">
+<%= @goal.goal_name %>を
+<%= @goal.quantity %><%@goal.qunit %>
+達成する
+<br>
+<%= @goal.deadline.month %>月<%= @goal.deadline.day %>日まで
+残り<%=@rest%> 日
+
+  </h2>
+
+
+<br>メンバー
+<br>
+<% @members.each do |m| %>
+<%= @users.find(m.user_id).name %><br>
+
+<% end %>

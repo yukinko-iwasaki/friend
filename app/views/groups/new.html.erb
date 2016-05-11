@@ -1,0 +1,15 @@
+<%= nested_form_for @group do |f| %>
+<%= f.label :group_name %>
+ <%= f.text_field :group_name %>
+
+<%= f.fields_for :members, @group.members do |f| %>
+
+<%= render "member_form", f:f %>
+  <% end %>
+  <p>
+    <%= f.link_to_add "メンバーを追加", :members %>
+  </p>
+
+    <%= f.submit %>
+
+<% end %>

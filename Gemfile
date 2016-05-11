@@ -46,7 +46,7 @@ group :development do
 end
 gem 'devise'
 
-gem 'rails_12factor'
+
 
 group :production do
   gem 'rails_12factor'
@@ -66,3 +66,9 @@ gem 'therubyracer'
 gem 'bootstrap-sass'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+
+group :development do
+ gem 'meta_request'
+end
+
+gem "nested_form"

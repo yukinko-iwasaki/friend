@@ -1,30 +1,147 @@
-マイゴール詳細ページ
 
-<%= link_to '進捗データ入力',  new_user_goal_track_path(goal_id: params[:id]) %>
+<h2 class="goaldeclaration">
+<%= @goal.goal_name%>を
 
-  <p>プログレスは
-  <% @progs.each do |prog| %>
-  <% @total += prog.quantity %>
+<%=@goal.quantity%>
+<%= @goal.qunit %>達成する
+<br>
+<%= @goal.deadline.month %>月<%= @goal.deadline.day %>日まで残り
+  <%= @rest %> 日
+  </h2>
+
+<button id="progress">進捗データ入力</button>
+<div class="inputtrack", title="進捗データ入力">
+
+
+
+<%= form_for @track,:url => {:controller => 'tracks',:action=>'create', :goal_id=>params[:id]}, remote: true do |f| %>
+
+  <%= @goal.goal_name %> を
+  <%=f.number_field :quantity %>
+  <%= @goal.qunit%>完了
+
+
+  <div class="col10 push1">
+              <%= button_tag type: "submit", class: "btn btn--block" do %>
+              入力<i class="icon-arrow-right"></i>
+              <% end %>
+            </div>
   <% end %>
+  </div>
 
- 
+<div id= "progress_post">
+昨日までの達成度<%= @tracks.sum(:quantity)*100/@aim.quantity%> %達成
 
-  <%= @total/@aim.quantity*100  %>
-  %です</p>
+</div>
+目標値 <%= @aim.quantity %>
 
-<div class=comments>
+
+
+<div class="progress">
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%= @tracks.sum(:quantity)*100/@aim.quantity %>%">
+    <span class="sr-only">40% Complete (success)</span>
+  </div>
+</div>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
+<% if user_signed_in? %>
+<div class="container_comment">
 <%= form_for @comment, :url=>{:action=> :commentcreate}, remote: true do |f| %>
 <%= f.text_field :comment %>
 <%= f.submit 'コメント' %>
 <% end %>
 
 
-
-<ul class=comment_post>
+<div class="comments">
  
   <%= render @comments %>
-
-</ul>
-
-
+</div>
   </div>
+  <% else %>
+  <div class="container_comment">
+  <div class="comments">
+    <p>コメント一覧</p>
+
+  <% @comments.each do |comment| %>
+  
+  <p>
+  <strong><%= link_to comment.user.name, "/users/#{comment.user_id}" %></strong>
+  <%= comment.comment %>
+  </p>
+  
+  <% end %>
+  </div>
+
+  <% end %>
+  </div>
+  
+
+<script>
+  
+ $(".inputtrack" ).dialog({autoOpen: false });
+  $("#progress").click(function(){
+  $(".inputtrack").dialog("open");
+  });
+
+  $(".inputtrack").submit(function(){
+  $(this).dialog("close");
+  });
+
+
+  $(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'area'
+        },
+        title: {
+            text: '<%= @goal.goal_name %>'
+        },
+        xAxis: {
+            allowDecimals: false,
+            labels: {
+                formatter: function () {
+                    return this.value; // clean, unformatted number for year
+                }
+            }
+        },
+        yAxis: {
+            title: {
+                text: '<%= @goal.qunit %>'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value;
+                }
+            }
+        },
+        tooltip: {
+            pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+        },
+        plotOptions: {
+            area: {
+                pointStart: <%= 3.weeks.ago.at_midnight.to_i * 1000 %>,
+                marker: {
+                    enabled: false,
+                    symbol: 'circle',
+                    radius: 2,
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                }
+            }
+        },
+        series: [{
+            pointInterval: <%= 1.day * 1000 %>,
+            name: '<%= @goal.goal_name %>',
+            data: <%= (3.weeks.ago.to_date..Date.today).map { |date| Track.where(goal_id: params[:id]).total_on(date).to_f}.inspect %>
+        },]
+    });
+});
+
+</script>
+

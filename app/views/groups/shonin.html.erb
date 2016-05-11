@@ -1,0 +1,8 @@
+承認
+
+<%= form_for(@members, :url => {:controller => :groups, :action => :update}) do |f| %>
+<%= f.check_box :status %>
+<%= f.submit %>
+
+
+<% end %>

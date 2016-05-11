@@ -1,13 +1,12 @@
 トップ!!
 目標一覧
 
+
+<div class="mygoalslist">
 <% @goals.each do |goal| %>
-<ul>
-<li>
-<%= goal.goal_name %>
 
-<%= link_to '詳細', top_path(id: goal.id), method: :get %>
-
-  </li>
-  </ul>
+<p>
+<%= link_to goal.goal_name, "/tops/#{goal.id}", method: :get %>
+  </p>
 <% end %>
+  </div>

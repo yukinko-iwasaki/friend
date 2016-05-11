@@ -1,15 +1,84 @@
-<h2>
-<%= @goal.goal_name %>
-  </h2>
-
-
-  <p>チャレンジャーは
+  <p id="user">チャレンジャーは
 
 <% @user.each do |user| %>
 <%= user.name %> 
 <% end %>
-
 さん</p>
+
+<h2 class="goaldeclaration">
+<%= @goal.goal_name%>を
+
+<%=@goal.quantity%>
+<%= @goal.qunit %>達成する
+
+<br>
+<% if @rest>0 %>
+<%= @goal.deadline.month %>月<%= @goal.deadline.day %>日まで残り
+  <%= @rest %> 日
+  <% else %>
+  <% if @tracks.sum(:quantity)*100/@aim.quantity >=100 %>
+  目標達成！
+  <% else %>
+  目標達成できませんでした！
+  <% end %>
+  <% end %>
+  </h2>
+
+<div id= "progress_post">
+今日までの達成度<%= @tracks.sum(:quantity)*100/@aim.quantity%> %達成
+
+</div>
+目標値 <%= @aim.quantity %>
+
+
+
+<div class="progress">
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%= @tracks.sum(:quantity)*100/@aim.quantity %>%">
+    <span class="sr-only">40% Complete (success)</span>
+  </div>
+</div>
+
+
+
+
+
+
+<% if user_signed_in? %>
+<div class="container_comment">
+<%= form_for @comment, :url=>{:controller=> :goals, :action=> :commentcreate}, remote: true do |f| %>
+<%= f.text_field :comment %>
+<%= f.submit 'コメント' %>
+<% end %>
+
+
+<div class=comments>
+ 
+  <%= render @comments %>
+</div>
+
+  </div>
+  <% else %>
+  <div class="container_comment">
+  <div class=comments>
+    <p>コメント一覧</p>
+
+  <% @comments.each do |comment| %>
+  <div class="commenteach">
+  <u><%= link_to comment.user.name, "/users/#{comment.user_id}" %></u>
+  <small class="date"><%= Date.today %></small>
+  <br>
+  <%= comment.comment %>
+  
+  </div>
+  
+  <% end %>
+  </div>
+
+  <% end %>
+    </div>
+
+
+
 
 
 

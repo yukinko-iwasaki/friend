@@ -1,0 +1,3 @@
+$("#track_quantity").val(""); // 入力フォームを空欄にする処理
+$("#progress_post").html("今日までの達成値<%= @tracks.sum(:quantity)*100/@aim.quantity %> % ");
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502094840) do
+ActiveRecord::Schema.define(version: 20160511035251) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -32,7 +32,27 @@ ActiveRecord::Schema.define(version: 20160502094840) do
     t.integer  "progress",       limit: 4
     t.string   "qunit",          limit: 255
     t.date     "deadline"
-    t.string   "type",           limit: 255
+    t.string   "goaltype",       limit: 255
+    t.string   "group_name",     limit: 255
+    t.string   "string",         limit: 255
+    t.string   "member",         limit: 255
+    t.integer  "group_id",       limit: 4
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "group_name", limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "members",    limit: 255
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.integer  "group_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.boolean  "status",               default: false
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -59,6 +79,8 @@ ActiveRecord::Schema.define(version: 20160502094840) do
     t.datetime "updated_at",                                      null: false
     t.string   "nickname",               limit: 255
     t.string   "name",                   limit: 255
+    t.integer  "goal_id",                limit: 4
+    t.integer  "group_id",               limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

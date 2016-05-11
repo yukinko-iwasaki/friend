@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
   <head>
     <title>仲良し５人組</title>
@@ -6,28 +6,17 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 
-   
 
-    <script type="text/javascript">
-      WebFontConfig = {
-        google: { families: [ 'Unica+One::latin' ] }
-      };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })();
-    </script>
-    <link type="text/css" rel="stylesheet"
+
+     <link type="text/css" rel="stylesheet"
   href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
 <script type="text/javascript"
   src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript"
   src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
   </head>
 
   <body>
@@ -35,25 +24,68 @@
 
      <header class="header">
     <div class="header__bar row">
-      <h1 class="grid-6"><a href="/">仲良し５人組</a></h1>
-      <% if user_signed_in? %>
-        <div class="user_nav grid-6">
-          <span><%= current_user.name %>
-            <ul class="user__info">
-              <li>
-                <a href="/users/<%= current_user.id %>">マイページ</a>
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-              </li>
-            </ul>
-          </span>
+      <h1 class="headingtitle"><a href="/">仲良し５人組</a></h1>
 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+  <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+       <ul class="nav navbar-nav">
+         <p class="navbar-text">
+         <%= link_to "top", "/", :class => 'get' %>
+         
+         </p>
+          <p class="navbar-text">
+         <%= link_to "about", "/tops/index/about", :class => 'get' %>
+       </p>
+       </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <span>
+<p class="navbar-text">
+          <%= link_to 'グループ作成', new_group_path %>
+        </p>
+<p class="navbar-text">
+          <%= link_to '目標設定', new_user_goal_path(user_id: current_user.id) %>
+        </p>
+            <p class="navbar-text">
+                <a href="/users/<%= current_user.id %>">マイページ</a>
+              </p>
+               <p class="navbar-text">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </p>
+
+
+
+          </span>
+          
         </div>
       <% else %>
-        <div class="grid-6">
+<p class="navbar-text">
           <%= link_to "ログイン", new_user_session_path, :class => 'post' %>
+        </p>
+        <p class="navbar-text">
           <%= link_to "新規登録", new_user_registration_path, :class => 'post' %>
+          <p class="navbar-text">
         </div>
       <% end %>
+      </ul>
+    </div>
+
+  </div>
+  </nav>
+
+ 
     </div>
   </header>
 

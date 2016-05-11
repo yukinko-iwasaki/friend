@@ -25,6 +25,7 @@ Rails.application.configure do
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
+  config.serve_static_assets=true
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
@@ -76,4 +77,5 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
 end

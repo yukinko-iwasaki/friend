@@ -10,11 +10,12 @@ class GroupsController < ApplicationController
   end
 
   def show
-   
+
     @members=Member.where(group_id: params[:id], status: true)
     @users=User.all
     @goal=Goal.find_by(group_id: params[:id])
     @rest=(@goal.deadline - Date.today).to_i
+    @track=Track.new
 
   end
 

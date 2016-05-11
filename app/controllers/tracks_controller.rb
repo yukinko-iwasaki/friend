@@ -2,7 +2,7 @@ class TracksController < ApplicationController
 
 
   def create
-
+    binding.pry
     Track.create(track_params)
     redirect_to action: :index
 

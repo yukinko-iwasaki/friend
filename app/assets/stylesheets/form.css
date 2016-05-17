@@ -156,6 +156,8 @@ label {
   margin: 0 auto;
   text-align: center;
   height: 50px;
+  font-size: 30px;
+  color: #000000;
 }
 #group_members_attributes_0_user_id{
   width: 130px;

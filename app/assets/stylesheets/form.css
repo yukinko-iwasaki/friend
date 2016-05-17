@@ -236,8 +236,6 @@ color: black;
 overflow: scroll;
  width: 70%;
  height: 400px;
-  @include boxBase(20px 0 ,30px);
-  box-shadow: 0 0 10px rgba($black,0.2);
   background-color: #FFFFFF
 ;
   box-sizing: border-box;
@@ -253,7 +251,7 @@ overflow: scroll;
   padding: 5px;
   margin-top: 15px;
   a {
-    color: $accent;
+    color:black;
     &:hover {
       text-decoration: underline;
     }

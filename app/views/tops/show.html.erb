@@ -1,20 +1,20 @@
-  <p id="user">チャレンジャーは
+  <div class='introduction'>
+  <p id="goaltitle1">チャレンジャーは
 
 <% @user.each do |user| %>
 <%= user.name %> 
 <% end %>
-さん</p>
+さん
 
-<h2 class="goaldeclaration">
 <%= @goal.goal_name%>を
 
 
 <%=@goal.quantity%>
 <%= @goal.qunit %>達成する
 
-  </h2>
+  </p>
 
-<div id= "progress_post">
+<div class= "text">
 <% if @tracks.sum(:quantity)!=0 %>
 今日までの達成度<%= @tracks.sum(:quantity)*100/@aim.quantity%> %達成
 
@@ -33,9 +33,8 @@
 </div>
 <% end %>
 </div>
-目標値 <%= @aim.quantity %>
 
-
+  </div>
 
 
 

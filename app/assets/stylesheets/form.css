@@ -79,9 +79,9 @@ select{
   -webkit-appearance: none;
   appearance: none;
   
-   width: 70px;
    height: 50px;
    background-color: white;
+   margin-left: 0px;
 }
 #goal_frequency_unit{
   font-family: uzura;
@@ -143,14 +143,15 @@ th{
   color:black;
 }
 #new_group{
-   background-color:  #ffff99;
-   text-align: center;
+
+   text-align: left;
 }
 label {
-  font-size: 50px;
-  color:#000000;
-  margin:0 auto;
-  text-align: center;
+    font-size: 50px;
+    color: #000000;
+    text-align: left;
+    width: 800px;
+    margin-left: 0;
 }
 #group_group_name{
   margin: 0 auto;
@@ -158,6 +159,7 @@ label {
   height: 50px;
   font-size: 30px;
   color: #000000;
+  width: 500px;
 }
 #group_members_attributes_0_user_id{
   width: 130px;
@@ -166,27 +168,37 @@ label {
   margin-left: 200px;
 
 }
+#group_members_attributes_1463460537169_user_id{
+  width: 130px;
+  height: 50px;
+  text-align: left;
+  margin-left: 200px;
+
+}
+
 
 .add_nested_fields{
-  font-size: 50px;
+  font-size: 30px;
   color: #000000;
-  text-align: center;
+  text-align: left;
+  margin-left: 0;
 }
 
-.fields{
+.fields #group_members_attributes_1463461434974_user_id{
   text-align: center;
   margin-left: 100px;
+  width: 300px;
 }
-select{
- 
-}
+
+
 
 div.fields select{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
  color:black;
-  font-size:30px;}
+  font-size:30px;
+width: 300px;}
 
   div.fields select option{
     font-family: uzura;
@@ -236,8 +248,8 @@ color: black;
 
 
 overflow: scroll;
- width: 70%;
- height: 400px;
+ width: 600px;
+ height: 300px;
   background-color: #FFFFFF
 ;
   box-sizing: border-box;
@@ -314,7 +326,7 @@ font-size: 20px;
   background-color: yellow;
 }
 .pastprogress{
-  width: 200px;
+  min-width: 700px;
   height: 400px;
   overflow: scroll;
 }
@@ -352,4 +364,35 @@ font-size: 20px;
   width: 100px;
   height: 100px;
   background-color: #FFFFFF;
+}
+#group_user_id{
+  margin-left: 0;
+}
+.fields p{
+  margin-left: 0; 
+  text-align: left;
+}
+.fields #group_members_attributes_0_user_id{
+  margin-left: 0;
+  width:300px;
+
+
+}
+th{
+  color: #000000;
+}
+td{
+  text-align: center;
+  font-size: 30px;
+  color: #000000;
+}
+.new_group input{
+  margin-left: 0;
+  width: 100px;
+  height: 50px;
+  color:#000000;
+  font-size: 30px;
+}
+p .add_nested_fields{
+  text-decoration: underline;
 }

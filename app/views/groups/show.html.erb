@@ -1,26 +1,29 @@
 
 
-<%= link_to "新しいグループ目標を設定", "/groups/#{params[:id]}/goals/new" %>
+<%= link_to "新しいグループ目標を設定", "/groups/#{params[:id]}/goals/new", id:'yellowc'%>
 
-
+  <p class="grouptitle"><%= @group.group_name%>の目標一覧</p>
 <div class="goaldeclaration">
+
 <% @goals.each do |goal| %>
 <% if (goal.deadline - Date.today).to_i>=0 %>
-<%= link_to goal.goal_name, "/groups/#{params[:id]}/goals/#{goal.id}" %>
+
+<div class="goaleach">
+<p class="goaltitle"><%= link_to goal.goal_name, "/groups/#{params[:id]}/goals/#{goal.id}" %>
 :
 <%= goal.deadline.month %>月<%= goal.deadline.day %>日まで
-残り<%=(goal.deadline - Date.today).to_i%> 日
-
-<br>
+  残り<%=(goal.deadline - Date.today).to_i%> 日</p>
+  </div>
 <% end %>
+
 
   </div>
 
   <div class="completed">
-  終了した目標一覧
+<p class="mtitle"> 終了した目標一覧
 <% @goals.each do |goal| %>
 <% if (goal.deadline - Date.today).to_i<=0 %>
-<%= link_to goal.goal_name, "/groups/#{params[:id]}/goals/#{goal.id}" %>
+  <%= link_to goal.goal_name, "/groups/#{params[:id]}/goals/#{goal.id}" %></p>
 
 
 <br>
@@ -32,21 +35,22 @@
 <% end %>
 
 
-
-<div class="memberlist" div>
-メンバー
-<br><% @members.each do |m| %>
-<%= @users.find(m.user_id).name %><br>
+<div class="members">
+<div class="memberlist">
+  <p class='mtitle'>メンバー</p>
+<% @members.each do |m| %>
+  <p class='text'><%= @users.find(m.user_id).name %></p>
 
 <% end %>
   </div>
 <div class="non_memberlist" div>
-承認待ちのメンバー一覧
-<br><% @nonmembers.each do |m| %>
-<%= @users.find(m.user_id).name %><br>
+<p class='mtitle'>承認待ちのメンバー一覧<br>
+<% @nonmembers.each do |m| %>
+ <p class='text'> <%= @users.find(m.user_id).name %></p>
 
 <% end %>
 
+  </div>
   </div>
 
 <script>

@@ -102,7 +102,7 @@ em {
 .signup{
   width: 100%;
   height: 80%;
-  background-color: #F6E3CE;
+
   
 }
 
@@ -178,10 +178,10 @@ a #goalname{
 
 }
 p{
-  text-align: center;
+  text-align: left;
   font-size: 40px;
   margin-bottom: 0;
-  margin-left: 70px;
+  margin-left: 0px;
 
 }
 .titletop{
@@ -226,9 +226,9 @@ input {
   margin-bottom: 10px;
 }
 .btn1{
-  width: 150px;
-  height: 60px;
-  font-size: 30px;
+  width: 250px;
+  height: 100px;
+  font-size: 50px;
 }
 
 
@@ -299,4 +299,143 @@ color: #000000;
 width: 200px;
 height: 40px;
 font-size: 20px;
+}
+#yellowb1
+{
+float: left;
+float: right;
+background-color: #ffff7f;
+color: #000000;
+width: 200px;
+height: 40px;
+font-size: 20px;
+}
+#yellowc
+{
+float: left;
+float: right;
+background-color: #ffff7f;
+color: #000000;
+width: 250px;
+height: 40px;
+font-size: 20px;
+}
+#progresstitle{
+  font-size:20px;
+  color: #000000;
+ float: left;
+}
+
+.progress{
+  margin-top: 30px;
+}
+
+.text{
+  font-size: 25px;
+  text-align: center;
+}
+.texts{
+  font-size: 25px;
+
+}
+
+.progresstable{
+  height: 400px;
+  overflow: scroll;
+}
+.bottoms{
+  margin: 0 auto;
+  text-align: center;
+}
+.togroup{
+  margin-left: 0;
+}
+.grouptitle{
+  font-size: 40px;
+  text-align: center;
+}
+.goaltitle{
+  text-align: center;
+  font-size: 30px;
+  margin-top: 40px;
+}
+.completed{
+  float: right;
+  width: 400px;
+  height: 300px;
+  overflow: scroll;
+  border:5px dotted #FFFFFF;
+}
+.members{
+
+   width: 400px;
+  height: 300px;
+  overflow: scroll;
+  border-radius: 10px;
+
+}
+.mtitle{
+  font-size: 30px;
+text-align: center;
+}
+.members{
+  border:5px dotted #FFFFFF;
+  border-radius: 10px;
+}
+.goaldeclaration{
+
+  height: 500px;
+  border-bottom:5px solid #FFFFFF;
+  border-radius:5px 
+}
+.new_user .field label{
+  font-size: 50px;
+  text-align: center;
+  width: 400px;
+}
+.new_user .field label{
+  width: 400px;
+
+}
+.field #user_email{
+height: 50px;
+width: 400px;
+font-size:30px;
+}
+.field #user_password{
+height: 50px;
+width: 400px;
+font-size:30px;
+
+}
+.field #user_password_confirmation{
+  height: 50px;
+width: 400px;
+font-size:30px;
+}
+
+.actions input{
+  width: 200px;
+  height: 60px;
+  color:#000000;
+  background-color: yellow;
+  font-size: 40px;
+  margin-top: 40px;
+
+}
+.new_user input{
+  margin-left: 0;}
+
+#user_remember_me{
+  margin: 0 auto;
+  width: 100px;
+}
+
+#goaltitle1{
+   font-size:60px;
+   text-align: center;
+}
+.introduction{
+  height: 500px;
+  border-bottom:5px solid #FFFFFF;
 }

@@ -47,7 +47,7 @@ end
     @members=Member.where(group_id: params[:id], status: true)
     @nonmembers=Member.where(group_id: params[:id], status: false)
     @users=User.all
-
+    @group=Group.find(params[:id])
 
     
     @track=Track.new

@@ -4,17 +4,52 @@ class GroupsController < ApplicationController
 
     @group= Group.new
     @group.members.build
-    @users= User.where('name LIKE(?)',  "%#{params[:keyword]}%")
+    @users=User.where.not(id: current_user.id)
+    @users=@users.where('name LIKE(?)',  "%#{params[:keyword]}%")
 
 
   end
 
+def goalshow
+
+@group_id=group_id_params
+@comment=Comment.new
+@comments=Comment.where(goal_id: params[:goal_id]).order("created_at DESC")
+@track=Track.new
+@goal=Goal.find(params[:goal_id])
+@rest=(Goal.find(params[:goal_id]).deadline - Date.today).to_i
+@aim = Goal.find(params[:goal_id])
+@tracks=Track.where(user_id:current_user.id, goal_id: params[:goal_id])
+@tracksmax= @tracks.maximum('period')
+@tracksmember=Track.where(goal_id:params[:goal_id])
+
+if @goal.frequency_unit=="日"
+@since=(Date.parse(DateTime.now.to_s)-Date.parse(@goal.created_at.to_s)).to_i
+
+elsif @goal.frequency_unit=="週"
+@since=(Date.parse(DateTime.now.to_s)-Date.parse(@goal.created_at.to_s)).to_i/7
+
+else
+  @since=(Date.parse(DateTime.now.to_s)-Date.parse(@goal.created_at.to_s)).to_i/30
+end
+
+create_memberlist
+@tracksbyperiod=Track.where(goal_id:params[:goal_id]).group(:user_id,:period) 
+
+end
+
+
   def show
 
+    @goals=Goal.where(group_id: params[:id])
+
+
     @members=Member.where(group_id: params[:id], status: true)
+    @nonmembers=Member.where(group_id: params[:id], status: false)
     @users=User.all
-    @goal=Goal.find_by(group_id: params[:id])
-    @rest=(@goal.deadline - Date.today).to_i
+
+
+    
     @track=Track.new
 
   end
@@ -30,9 +65,12 @@ end
   def create
 
     @group=Group.new(group_params)        # 関連オブジェクトをbuild
-    
     @group.save
-    @grouplast=Group.last(1).first
+##招待者自身をメンバーに加える
+@memberlast=Member.last
+     Member.create(group_id: @memberlast.group_id,user_id: current_user.id, status: true)
+     @grouplast=Group.last
+
     redirect_to "/groups/#{@grouplast.id}/goals/new"
   end
 
@@ -54,6 +92,7 @@ end
     Goal.create(goal_params_group)
     redirect_to action: :index
   else
+
     Goal.create(goal_params_check_group)
     redirect_to action: :index
   end
@@ -66,6 +105,10 @@ end
 
   private
 
+def group_id_params
+  params[:group_id]
+end
+
   def group_params
 
    params.require(:group).permit(:group_name, members_attributes:[:user_id])
@@ -76,7 +119,7 @@ end
 
     params[:goal][:deadline]= DateTime.parse(params[:goal][:deadline])
     params[:goal][:goaltype] = 1
-    params.require(:goal).permit(:goal_name, :deadline, :quantity, :qunit).merge(group_id: params[:group_id])
+  params.require(:goal).permit(:goal_name, :deadline, :quantity, :qunit, :goaltype).merge(group_id: params[:group_id],user_id:current_user.id)
 
   end
 
@@ -84,11 +127,11 @@ end
 
   params[:goal][:deadline]= DateTime.parse(params[:goal][:deadline])
     params[:goal][:goaltype] = 2
-    params.require(:goal).permit(:goal_name, :deadline, :quantity, :qunit, :frequency, :frequency_unit).merge(group_id: params[:group_id])
+    params.require(:goal).permit(:goal_name, :deadline, :quantity, :qunit, :goaltype,:frequency, :frequency_unit).merge(group_id: params[:group_id],user_id:current_user.id)
 
   end
 
-  def status_params
+def status_params
  
   @status=params[:member][:status]
   if @status=="1" 
@@ -96,11 +139,24 @@ end
   else
     return false
   end
-  end
+end
 
   def update_params
     params.permit(:group_id).merge(user_id: params[:id])
   end
+
+def
+ create_memberlist
+ @members= Member.where(group_id:params[:group_id]).group(:user_id)
+
+ @memberlist=Array.new
+ @members.each do |m|
+  @memberlist.push(m.user_id)
+end
+
+end
+
+
 
 end
 

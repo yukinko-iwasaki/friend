@@ -2,6 +2,7 @@
 class TopsController < ApplicationController
 
    def index
+
     @goals = Goal.all
 
   end

@@ -1,35 +1,45 @@
 <div class="mygoals">
-  <h2><%= @name %> さんの目標一覧</h2>
+  <p class="usertitle"><%= @name %> さんの目標一覧</p>
 
   </div>
-<div class=grouppending>
+  <div class="invitation_container">
+  <% if @user.id==current_user.id %>
+  <% if @status==true %>
+<div class="grouppending">
 
-以下のグループからの招待が来ています
+
+<p>以下のグループからの招待が来ています</p>
 <% @members.each do |member| %>
 <% if member.status!=true %>
+  <div class="invitation">
   <p>
-  グループ名
 <%= Group.find(member.group_id).group_name %><br>
-
-<%= link_to "承認する", "/groups/#{member.group_id}/users/#{current_user.id}", method: :get %>
+  <p class="shonin"><%= link_to "承認する", "/groups/#{member.group_id}/users/#{current_user.id}", method: :get %></p>
   </p>
+  </div>
 <% end %>
 <% end %>
+<% end %>
+<%end %>
+  </div>
+
 
   </div>
 
 <div class="mygoalslist">
-個人の目標
+  <p class="user_title">個人の目標</p>
 <% @goals.each do |goal| %>
-<p>
+<p class="goaleach">
   <%= link_to goal.goal_name, "/users/#{@user.id}/goals/#{goal.id}", method: :get %>
   </p>
 <% end %>
+  </div>
 <br>
-グループの目標
-<% @current_member.each do |m| %>
-<p>
-  <%= link_to @groups.find(m.group_id).group_name, "/groups/#{m.group_id}", method: :get %>
+<div class="mygoalslist">
+ <p class="user_title">グループの目標</p>
+<% @goalsgroup.each do |m| %>
+<p class="goaleach">
+  <%= link_to m.goal_name, "/groups/#{m.group_id}/goals/#{m.id}", method: :get %>
   </p>
 <% end %>
 

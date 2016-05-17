@@ -13,14 +13,16 @@ class GoalsController < ApplicationController
   end
 
   def create
+
     Goal.create(goal_params)
     redirect_to action: :index
+    
     Track.create(goal_id:  Goal.last(1).first.id, user_id: current_user.id, quantity: 0)
 
   end
 
    def createcheck
-     
+
     Goal.create(goal_params_check)
     redirect_to action: :index
     Track.create(goal_id:  Goal.last(1).first.id, user_id: current_user.id, quantity: 0)
@@ -43,21 +45,20 @@ class GoalsController < ApplicationController
   end
 
 def show
- 
+
   @comment=Comment.new
   @comments=Comment.where(goal_id: params[:id]).order("created_at DESC")
 
   @track=Track.new
 
-  @tracks=Track.where(goal_id: params[:id])
+  @tracks=Track.where(goal_id: params[:id],user_id: current_user.id)
+  @tracksmax= @tracks.maximum('period')
 
   @goal = Goal.find(params[:id])
 
   @rest=(Goal.find(params[:id]).deadline - Date.today).to_i
 
   @aim = Goal.find(params[:id])
-
-  
 
 
 
@@ -80,6 +81,7 @@ end
 
 
 
+
   private
   
   def goal_params
@@ -93,7 +95,7 @@ end
  def goal_params_check
   params[:goal][:deadline]= DateTime.parse(params[:goal][:deadline])
     params[:goal][:goaltype] = 2
-    params.require(:goal).permit(:goal_name,:quantity,:frequency,:qunit, :deadline, :frequency_unit, :goaltype).merge(user_id: current_user.id)
+    params.require(:goal).permit(:goal_name,:quantity,:frequency, :deadline, :frequency_unit, :goaltype).merge(user_id: current_user.id)
 
   end
 

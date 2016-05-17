@@ -1,12 +1,15 @@
-トップ!!
-目標一覧
 
-
-<div class="mygoalslist">
+  <p class="user_title">みんなの目標一覧</p>
+<div class="mygoalslist2">
 <% @goals.each do |goal| %>
-
-<p>
+<% i=0 %>
+<div class="goaleach">
+<p id="goalname">
 <%= link_to goal.goal_name, "/tops/#{goal.id}", method: :get %>
+<br>
+<p id="username">
+<%= link_to User.find(goal.user_id).name, "/users/#{goal.user_id}" %>
   </p>
+  </div>
 <% end %>
   </div>

@@ -1,8 +1,7 @@
-
-<p class="commenteach">
- <strong><%= link_to comment.user.name, "/users/#{comment.user_id}" %></strong>
-  <br><%= comment.comment %>
-
-  <br><%= Date.today %>
+<div class="commenteach">
+<p class="blacktable">
+<p id="user_name">  <%= link_to comment.user.name, "/users/#{comment.user_id}",:style=>"color:black;" %></p>
+  <p class="blackcomment"><%= comment.comment %></p>
+<p class="date"><%= Date.today %></p>
   </p>
-
+  </div>

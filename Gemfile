@@ -73,3 +73,4 @@ group :development do
 end
 
 gem "nested_form"
+gem 'webpay'

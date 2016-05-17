@@ -1,0 +1,301 @@
+html {
+  display: block;
+  zoom: 1; /* IEのみ */
+}
+
+head, meta, link, style, script {
+  display: none;
+}
+
+
+
+@font-face {
+    font-family: 'uzura';
+    src: local('uzura'),
+         local('uzura'),
+         url('uzura.ttf') format('truetype');
+}
+
+body {
+ background-color: #58CE91;
+  color: white;
+  display: block;
+  margin: 8px;
+  zoom: 1;
+  font-family: "uzura"; 
+}
+a{
+  font-family: "uzura";
+}
+
+div {
+  display: block;
+}
+
+h1 {
+  display: block;
+  margin: 0.67em 0; /* Webkit, Firefoxは、margin-before: 0.67em; margin-after: 0.67em; */
+  font-size: 2em;
+  font-weight: bold;
+  page-break-after: avoid; /* IEのみ */
+}
+
+h2,
+:match(article,aside,nav,section) h1 {
+  display: block;
+  margin: 0.83em 0; /* Webkit, Firefoxは、margin-before: 0.83em; margin-after: 0.83em; */
+  font-size: 1.5em;
+  font-weight: bold;
+  page-break-after: avoid; /* IEのみ */
+}
+
+h3 {
+  color:yellow;
+  font-size: 30px;
+  text-align: center;
+
+}
+
+p {
+  font-family: "uzura";
+  text-align: center;
+  font-size: 30px;
+  display: block;
+  margin: 1em 0; /* Webkit, Firefoxは、margin-before: 1em; margin-after: 1em; */
+}
+
+ul { /* ol　もほぼ同じ */
+  display: block;
+  margin: 1em 0; /* Webkit, Firefoxは、margin-before: 1em; margin-after: 1em; */
+  padding-start: 40px; /* IEは、padding-left: 30pt; Operaは、padding-left: 40px; */
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+li {
+  display: list-item;
+}
+
+dl {
+  display:block;
+  margin: 1em 0; /* Webkit, Firefoxは、margin-before: 1em; margin-after: 1em; */
+}
+dt {
+  display: block;
+}
+dd {
+  display:block;
+  margin-left: 40px; /* Webkit, Firefoxは、margin-start: 40px; */
+}
+
+img {
+  zoom: 1; /* IEのみ */
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-weight: italic;
+}
+.signup{
+  width: 100%;
+  height: 80%;
+  background-color: #F6E3CE;
+  
+}
+
+.field{
+
+  text-align: center;
+  
+}
+
+.actions{
+  text-align: center;
+
+}
+.goaleach{
+  margin: 0 auto;
+  width: 600px;
+  margin-bottom: 5px;
+   
+  border: 5px dotted #FFFFFF;  
+  border-radius: 15px;
+  text-align: center;
+  height: 150px;
+
+}
+a #goalname{
+  font-size:40px;
+  color: #f9fff9;
+  margin: 0;
+  color:#FFFFFF;
+}
+#username{
+  font-size:30px;
+  margin: 0;
+}
+.grouppending{
+  width:600px;
+  height: 300px;
+  border-radius: 10px;
+   margin: 0 auto;
+}
+.black{
+  color:#000000;
+}
+.blacktable{
+  color:#000000;
+  font-size: 20px;
+
+}
+.invitation{
+ font-size: 10px;
+
+}
+.invitation_container{
+  width: 100%;
+  max-height: 200px;
+  border-top: 10px solid #FFFFFF;
+  border-bottom: 10px solid #FFFFFF;
+  overflow: scroll;
+  text-align: center;
+}
+.table{
+  max-height: 400px;
+  overflow: scroll;
+  margin: 0 auto;
+  width: 500px;
+}
+
+.user_title{
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 10px;
+  margin-left: 70px;
+
+}
+p{
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 0;
+  margin-left: 70px;
+
+}
+.titletop{
+  text-align: center;
+}
+.shonin{
+  font-size: 20px;
+}
+.percent{
+  margin-top: 5px;
+  font-size:30px;
+  text-align: center;
+}
+
+.checkpast{
+  border-bottom: 10px dotted #FFFFFF;
+
+}
+.rest{
+  font-size:20px;
+  text-align: right;
+  margin-top: 5px;
+}
+
+input { 
+  margin-left : 550px ; 
+}
+
+.commentbottom{
+  background-color: #7fffbf;
+  color:#000000;
+  width: 90px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+.date{
+  height: 10px;
+  color:#000000;
+  font-size:25px;
+  margin-bottom: 10px;
+}
+.btn1{
+  width: 150px;
+  height: 60px;
+  font-size: 30px;
+}
+
+
+#heart {
+margin-right: auto;
+margin-left: auto;
+  background-color: #ff99cc;
+    width: 400px;
+    height:300px;
+    border-radius: 40px;
+    margin-top: 100px;
+}
+
+#heart2 {
+margin-right: auto;
+margin-left: auto;
+  background-color: #ff99cc;
+    width: 400px;
+    height:300px;
+    border-radius: 40px;
+    margin-top: 50px;
+}
+#heart3{
+
+  margin-left:30px;
+  background-color: #ff99cc;
+    width: 200px;
+    height:100px;
+    border-radius: 40px;
+    margin-top: 50px;
+}
+strong{
+  font-size: 40px;
+  color:yellow;
+  text-align: center;
+}
+
+#user_name{
+  margin-top: 0;
+  text-decoration: underline;
+  font-size:25px;
+  color:black;
+  text-align: left;
+  margin-left: 0;
+}
+.blackcomment{
+  margin-top: 0;
+  font-size: 25px;
+  margin-left: 2px;
+  color:black;
+  text-align: left;
+}
+
+#setting{
+  font-family: uzura;
+  font-size: 40px;
+   text-align: center;
+}
+#new_track{
+  font-family: "uzura";
+}
+#yellowb{
+margin: 0 auto; 
+float: right;
+background-color: #ffff7f;
+color: #000000;
+width: 200px;
+height: 40px;
+font-size: 20px;
+}

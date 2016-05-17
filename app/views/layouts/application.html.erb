@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
 
 
-
+<link rel="stylesheet" href="stylesheets/style.css">
      <link type="text/css" rel="stylesheet"
   href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
 <script type="text/javascript"
@@ -15,75 +15,37 @@
 <script type="text/javascript"
   src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
   </head>
 
-  <body>
+<body>
 
 
      <header class="header">
     <div class="header__bar row">
       <h1 class="headingtitle"><a href="/">仲良し５人組</a></h1>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
 
-  <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-
-       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-       <ul class="nav navbar-nav">
-         <p class="navbar-text">
-         <%= link_to "top", "/", :class => 'get' %>
-         
-         </p>
-          <p class="navbar-text">
-         <%= link_to "about", "/tops/index/about", :class => 'get' %>
-       </p>
-       </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <span>
-<p class="navbar-text">
-          <%= link_to 'グループ作成', new_group_path %>
-        </p>
-<p class="navbar-text">
-          <%= link_to '目標設定', new_user_goal_path(user_id: current_user.id) %>
-        </p>
-            <p class="navbar-text">
-                <a href="/users/<%= current_user.id %>">マイページ</a>
-              </p>
-               <p class="navbar-text">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-            </p>
-
-
-
-          </span>
-          
-        </div>
-      <% else %>
-<p class="navbar-text">
-          <%= link_to "ログイン", new_user_session_path, :class => 'post' %>
-        </p>
-        <p class="navbar-text">
-          <%= link_to "新規登録", new_user_registration_path, :class => 'post' %>
-          <p class="navbar-text">
-        </div>
+<div class="dropdown">
+  <button class="btn1 btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+メニュー
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+    <li><%= link_to "top", "/", :class => 'get' %></li>
+    <li> <%= link_to "about", "/tops/index/about", :class => 'get' %></li>
+    <% if user_signed_in? %>
+    <li> <%= link_to '目標設定', new_user_goal_path(user_id: current_user.id) %></li>
+    <li> <%= link_to 'マイページ', user_path(id: current_user.id) %></li>
+    <li> <%= link_to 'グループ設定',new_group_path %></li>
+    <li role="separator" class="divider"></li>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+<% else %>
+  <li><%= link_to "ログイン", new_user_session_path, :class => 'post' %></li>
+  <li><%= link_to "新規登録", new_user_registration_path, :class => 'post' %></li>
       <% end %>
       </ul>
     </div>
-
-  </div>
-  </nav>
 
  
     </div>

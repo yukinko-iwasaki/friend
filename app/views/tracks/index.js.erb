@@ -1,3 +1,6 @@
-$("#track_quantity").val(""); // 入力フォームを空欄にする処理
-$("#progress_post").html("今日までの達成値<%= @tracks.sum(:quantity)*100/@aim.quantity %> % ");
+$("#track_quantity").val(""); //
+  $("#progress_post").html("<p>今日までの達成値<%= @tracks.sum(:quantity)*100/@aim.quantity %> %</p> ");
+
+  $("#progress_post2").html("<p><%= @tracksmax+1 %><%=  @goal.frequency_unit %>目: <%=@goal.goal_name%>を<strong><%= @tracks.where(period: @tracksmax).count-1 %> </strong> 回達成!</p>");
+
 

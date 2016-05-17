@@ -35,11 +35,11 @@
 
 <div id="dialog2" title="ゴール設定/チェックリスト">
     <%= form_for @goal, :url => {:action => :create_group}, remote: true do |f| %>
-  <%=f.text_field :goal_name, :placeholder=>"ジョギング" %>を
+  <%=f.text_field :goal_name, :placeholder=>"ジョギング５キロ" %>を
   
-  <%= f.select :frequency_unit, [["毎日", "day"], ["毎週","week"],["毎月", "month"]] %>
-  <%=f.text_field :quantity, :placeholder=>"５"%> 
-  <%=f.text_field :qunit, :placeholder=>"キロ" %>
+  <%= f.select :frequency_unit, [["毎日", "日"], ["毎週","週"],["毎月", "月"]] %>
+  <%=f.text_field :quantity, :placeholder=>"５"%>
+  回
   <%= f.text_field :deadline, :placeholder=>"4/30", id:"datepicker2" %>まで
   <p>達成する</p>
 
@@ -54,7 +54,9 @@
 
 
 <script>
- $("#dialog" ).dialog({ autoOpen: false });
+ $("#dialog" ).dialog({ autoOpen: false, minheight:800,
+  width:800
+});
   $("#opener").click(function(){
   $("#dialog").dialog("open");
   });
@@ -71,7 +73,7 @@
     });
   })
 
-  $("#dialog2" ).dialog({ autoOpen: false });
+  $("#dialog2" ).dialog({ autoOpen: false, height:800,width:800 });
   $("#opener2").click(function(){
   $("#dialog2").dialog("open");
   });

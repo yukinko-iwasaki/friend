@@ -145,15 +145,17 @@ end
     params.permit(:group_id).merge(user_id: params[:id])
   end
 
-def
- create_memberlist
- @members= Member.where(group_id:params[:group_id]).group(:user_id)
 
- @memberlist=Array.new
- @members.each do |m|
-  @memberlist.push(m.user_id)
+def create_memberlist
+
+ @members= Member.where(group_id:params[:group_id])
+
+ @memberlist=Set.new
+
+@members.each do |m|
+  @memberlist.add(m.user_id)
 end
-
+@memberlist=@memberlist.to_a
 end
 
 

@@ -12,8 +12,7 @@ html {
 body {
 
   margin: 0;
-  padding-bottom:140px; /
-  *フッターの高さと同じ*/
+  padding-bottom:140px;
 }
 article,
 aside,

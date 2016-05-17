@@ -12,17 +12,6 @@
 <%=@goal.quantity%>
 <%= @goal.qunit %>達成する
 
-<br>
-<% if @rest>0 %>
-<%= @goal.deadline.month %>月<%= @goal.deadline.day %>日まで残り
-  <%= @rest %> 日
-  <% else %>
-  <% if @tracks.sum(:quantity)*100/@aim.quantity >=100 %>
-  目標達成！
-  <% else %>
-  目標達成できませんでした！
-  <% end %>
-  <% end %>
   </h2>
 
 <div id= "progress_post">

@@ -26,8 +26,11 @@
   </h2>
 
 <div id= "progress_post">
+<% if @tracks.sum(:quantity)!=0 %>
 今日までの達成度<%= @tracks.sum(:quantity)*100/@aim.quantity%> %達成
-
+<% else %>
+今日までの達成度0%達成
+<% end %>
 </div>
 目標値 <%= @aim.quantity %>
 

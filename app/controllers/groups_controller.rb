@@ -132,9 +132,9 @@ end
   end
 
 def status_params
- 
-  @status=params[:member][:status]
-  if @status=="1" 
+
+  @status=params[:member][:check]
+  if @status=="true" 
     return true
   else
     return false

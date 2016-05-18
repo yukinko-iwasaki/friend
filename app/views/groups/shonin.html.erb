@@ -1,9 +1,15 @@
-承認
+  <p>承認</p>
 
 <%= form_for(@members, :url => {:controller => :groups, :action => :update}) do |f| %>
-<%= f.check_box :status %>
-<%= f.submit %>
+
+
+<%= f.hidden_field :check, :value => true %>
 
 
 
-<% end %>
+  <div class="col10 push1">
+              <%= button_tag type: "submit", id: "heart" do %>
+              承認!<i class="icon-arrow-right"></i>
+              <% end %>
+            </div>
+  <% end %>

@@ -1,5 +1,5 @@
 <div class="mygoals">
-  <p class="usertitle"><%= @name %> さんの目標一覧</p>
+  <p class="usertitle"><%= @name %> さんの目標一覧!</p>
 
   </div>
   <div class="invitation_container">
@@ -34,16 +34,15 @@
   </p>
 <% end %>
   </div>
-<br>
+
+
 <div class="mygoalslist">
  <p class="user_title">グループの目標</p>
-<% @goalsgroup.each do |m| %>
+<% @group_id.each do |g| %>
+<% @goals=Goal.where(group_id: g) %>
+<% @goals.each do |goal| %>
 <p class="goaleach">
-  <%= link_to m.goal_name, "/groups/#{m.group_id}/goals/#{m.id}", method: :get %>
-  </p>
+ <%= link_to goal.goal_name, "/groups/#{g}/goals/#{goal.id}", method: :get %></p>
 <% end %>
-
+<% end %>
   </div>
-
-
-

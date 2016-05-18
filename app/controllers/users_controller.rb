@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   @goalsgroup=@goalsgroup.where.not(group_id: nil)
 @groups=Group.all
 @status= statuscontain
+
+groupgoal
   end
 
 
@@ -34,6 +36,18 @@ end
 
 end
 
+
+def groupgoal
+
+  @members=Member.where(user_id:params[:id],status:true)
+  @group_id=Array.new
+  @members.each do |m|
+    @group_id.push(m.group_id)
+  end
+  return @group_id
+
+
+end
 
 end
 

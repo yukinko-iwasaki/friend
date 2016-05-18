@@ -88,6 +88,7 @@ end
   end
 
    def create_group
+  
   if params[:goal][:frequency_unit]==nil
     Goal.create(goal_params_group)
     redirect_to action: :index

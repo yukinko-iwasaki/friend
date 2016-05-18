@@ -28,6 +28,8 @@
  .complete_botton{
   font-size: 80px;
   font-family:uzura;
+  text-align: center;
+  margin-bottom: 100px;
  }
 
  #track_quantity{

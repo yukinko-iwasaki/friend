@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
   end
 
 def goalshow
-    
+
 member_nil_destroy
 @group_id=group_id_params
 @comment=Comment.new

@@ -9,15 +9,15 @@
 
 
 <p>以下のグループからの招待が来ています</p>
-<% @members.each do |member| %>
-<% if member.status!=true %>
+<% @nonmembers.each do |member| %>
+
   <div class="invitation">
-  <p>
+  <p class="goaleach">
 <%= Group.find(member.group_id).group_name %><br>
-  <p class="shonin"><%= link_to "承認する", "/groups/#{member.group_id}/users/#{current_user.id}", method: :get %></p>
+  <p class="shonin"><%= link_to "承認する", "/groups/#{member.group_id}/users/#{current_user.id}", method: :get ,class:"sbottom"%></p>
   </p>
   </div>
-<% end %>
+
 <% end %>
 <% end %>
 <%end %>

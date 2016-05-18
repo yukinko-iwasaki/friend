@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   @track=Track.new
   @tracks=Track.where(goal_id: params[:id])
   @members=Member.where(user_id: current_user.id)
+  @nonmembers=Member.where(user_id: current_user.id,status:false)
   @current_member=Member.where(user_id: current_user.id, status:true)
   @goalsgroup=Goal.where(user_id:params[:id])
   @goalsgroup=@goalsgroup.where.not(group_id: nil)

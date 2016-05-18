@@ -144,9 +144,10 @@ while(DateTime.now>=@day[i]) do
 end
 
 def success
+
   @aim=Goal.find(params[:goal_id]).quantity
 
-  @count=Track.where(user_id: current_user.id, goal_id:params[:goal_id]).group(:period).count
+  @count=Track.where(user_id: current_user.id, goal_id:params[:goal_id]).group(:period).order(:period).count
   @maxperiod=Track.where(user_id: current_user.id, goal_id:params[:goal_id]).maximum(:period)
   i=Track.where(user_id: current_user.id, goal_id:params[:goal_id]).minimum(:period)
 

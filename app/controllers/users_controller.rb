@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
 
+  @group_goals=Goal.where(user_id:params[:id]).where.not(group_id:nil)
+  @personal_goals=Goal.where(user_id:params[:id],group_id:nil)
   @user=User.find(params[:id])
   @name=User.find(params[:id]).name
   @goals=Goal.where(user_id:params[:id])

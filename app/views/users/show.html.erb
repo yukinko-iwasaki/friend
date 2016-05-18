@@ -28,7 +28,7 @@
 
 <div class="mygoalslist">
   <p class="user_title">個人の目標</p>
-<% @goals.each do |goal| %>
+<% @personal_goals.each do |goal| %>
 <p class="goaleach">
   <%= link_to goal.goal_name, "/users/#{@user.id}/goals/#{goal.id}", method: :get %>
   </p>
@@ -38,11 +38,10 @@
 
 <div class="mygoalslist">
  <p class="user_title">グループの目標</p>
-<% @group_id.each do |g| %>
-<% @goals=Goal.where(group_id: g) %>
-<% @goals.each do |goal| %>
+
+<% @group_goals.each do |goal| %>
 <p class="goaleach">
- <%= link_to goal.goal_name, "/groups/#{g}/goals/#{goal.id}", method: :get %></p>
+ <%= link_to goal.goal_name, "/groups/#{goal.group_id}/goals/#{goal.id}", method: :get %></p>
 <% end %>
-<% end %>
+
   </div>

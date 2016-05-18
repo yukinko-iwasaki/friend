@@ -16,11 +16,11 @@
   </div>
   <div id="dialog" title="ゴール設定/数字で設定">
     <%= form_for @goal, :url => {:action => :create_group}, remote: true do |f| %>
-  <%=f.text_field :goal_name, :placeholder=>"ジョギング" %>を 
-   <%= f.text_field :deadline, :placeholder=>"4/30", class: "datepicker" %>
+  <%=f.text_field :goal_name, :placeholder=>"ジョギング",:required=>true %>を 
+   <%= f.text_field :deadline, :placeholder=>"4/30", class: "datepicker",:required=>true  %>
   までに
-  <%=f.text_field :quantity, :placeholder=>"５"%> 
-  <%=f.text_field :qunit, :placeholder=>"キロ" %>
+  <%=f.text_field :quantity, :placeholder=>"５",:required=>true %> 
+  <%=f.text_field :qunit, :placeholder=>"キロ",:required=>true  %>
   <p>達成する</p>
 
   <div class="col10 push1">
@@ -35,12 +35,12 @@
 
 <div id="dialog2" title="ゴール設定/チェックリスト">
     <%= form_for @goal, :url => {:action => :create_group}, remote: true do |f| %>
-  <%=f.text_field :goal_name, :placeholder=>"ジョギング５キロ" %>を
+  <%=f.text_field :goal_name, :placeholder=>"ジョギング５キロ" ,:required=>true %>を
   
   <%= f.select :frequency_unit, [["毎日", "日"], ["毎週","週"],["毎月", "月"]] %>
-  <%=f.text_field :quantity, :placeholder=>"５"%>
+  <%=f.text_field :quantity, :placeholder=>"５",:required=>true %>
   回
-  <%= f.text_field :deadline, :placeholder=>"4/30", id:"datepicker2" %>まで
+  <%= f.text_field :deadline, :placeholder=>"4/30", id:"datepicker2" ,:required=>true %>まで
   <p>達成する</p>
 
   <div class="col10 push1">

@@ -1,4 +1,4 @@
-class Track < ActiveRecord::Base.unscoped
+class Track < ActiveRecord::Base
   belongs_to :goal
   belongs_to :user
 

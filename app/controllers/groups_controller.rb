@@ -35,7 +35,7 @@ else
 end
 
 create_memberlist
-@tracksbyperiod=Track.where(goal_id:params[:goal_id]).group(:user_id,:period) 
+@tracksbyperiod=Track.where(goal_id:params[:goal_id]).unscoped.group(:user_id,:period) 
 
 end
 

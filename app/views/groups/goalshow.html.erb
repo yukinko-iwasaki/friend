@@ -117,7 +117,7 @@
 
 <div id= "progress_post2">
 <p class="text">
-  <%= @since +1 %><%=  @goal.frequency_unit %>目 <%= @tracks.where(period: @tracksmax).count-1 %> 回達成!! </p>
+  <%= @since +1 %><%=  @goal.frequency_unit %>目 <%= @tracks.where(period: @tracksmax).count %> 回達成!! </p>
 </div>
  <% end %>
  
@@ -137,9 +137,9 @@
 <% end %>
 </tr>
 <% k=0 %>
-<% while k<@since do %>
+<% while k<=@since do %>
 <tr>
-  <th><%= k %><%=@goal.frequency_unit%>目</th>
+  <th><%= k+1 %><%=@goal.frequency_unit%>目</th>
 
 <% j=0 %>
 <% while j<@memberlist.length do %>

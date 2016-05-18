@@ -477,3 +477,27 @@ color:#5cb85c;
   width: 100px;
   height: 100px;
 }
+
+#WP_checkoutBox input[type=button]{
+  text-align: center;
+  width: 300px;
+   height:100px !important;
+
+  font-size: 30px !important;
+
+}
+#WP_checkoutBox{
+  text-align: center;
+}
+
+.title{
+  text-align: center;
+}
+
+#webpay-checkout #WP_panel.active{
+  width: 600px !important;
+  height: 900px !important;
+}
+#WP_payment{
+  font-size: 30px !important;
+}

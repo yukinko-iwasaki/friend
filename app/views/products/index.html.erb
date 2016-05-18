@@ -2,30 +2,14 @@
 <%= form_tag(action: :purchase, method: :post) do %>
 <script src="https://checkout.webpay.jp/v1/" class="webpay-button" data-key="<%= WEBPAY_PUBLIC_KEY %>"></script>
 <% end %>
-<h1>Listing Products</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <p class="title">目標にお金をかけよう！</p>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.price %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <p class="title">数値方式の目標の場合</p>
+  <p class="text">期限日までに目標数値を達成できなかった場合５００円課金されます。</p>
 
-<br>
+  <p class="title">チェック方式の目標の場合</p>
+  <p class="text">
+  目標を達成できなかった日は1００円づつ罰金されます。
+  罰金の合計額が期限日に課金されます。</p>
 
-<%= link_to 'New Product', new_product_path %>

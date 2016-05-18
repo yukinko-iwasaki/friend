@@ -1,6 +1,6 @@
 <%= nested_form_for @group do |f| %>
 <%= f.label :group_name %>
- <%= f.text_field :group_name %>
+ <%= f.text_field :group_name,:required => true %>
  <br>
 <%= f.label :user_id, 'メンバー' %>
 <%= f.fields_for :members, @group.members do |f| %>

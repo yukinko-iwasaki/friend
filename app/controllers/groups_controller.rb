@@ -11,7 +11,8 @@ class GroupsController < ApplicationController
   end
 
 def goalshow
-
+    
+member_nil_destroy
 @group_id=group_id_params
 @comment=Comment.new
 @comments=Comment.where(goal_id: params[:goal_id]).order("created_at DESC")
@@ -102,6 +103,12 @@ end
 
   end
 
+def member_nil_destroy
+  @member_nil=Member.where(user_id:nil)
+  @member_nil.each do |m|
+    m.destroy
+  end
+end
 
 
   private

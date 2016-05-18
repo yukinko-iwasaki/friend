@@ -29,7 +29,7 @@
 <%= form_for @track,:url => {:controller => 'tracks',:action=>'create', :goal_id=>params[:goal_id]}, remote: true do |f| %>
 
   <%= @goal.goal_name %> を
-  <%=f.number_field :quantity %>
+  <%=f.number_field :quantity%>
   <%= @goal.qunit%>完了
 
 

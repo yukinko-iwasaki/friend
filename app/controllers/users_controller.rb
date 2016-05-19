@@ -8,15 +8,19 @@ class UsersController < ApplicationController
   @goals=Goal.where(user_id:params[:id])
   @track=Track.new
   @tracks=Track.where(goal_id: params[:id])
+
   @members=Member.where(user_id: current_user.id)
   @nonmembers=Member.where(user_id: current_user.id,status:false)
   @current_member=Member.where(user_id: current_user.id, status:true)
+  group_id
+
   @goalsgroup=Goal.where(user_id:params[:id])
   @goalsgroup=@goalsgroup.where.not(group_id: nil)
 @groups=Group.all
 @status= statuscontain
 
 groupgoal
+
   end
 
 
@@ -51,6 +55,18 @@ def groupgoal
 
 
 end
+
+
+
+def group_id
+  @currentgroup=Array.new
+
+  @current_member.each do |m|
+     @currentgroup.push(m.group_id)
+   end
+   return @currentgroup
+  end
+
 
 end
 
